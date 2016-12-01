@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QRedux/qredux.js</file>
+        <file>QRedux/syncmiddleware.js</file>
+        <file>QRedux/signalproxymiddleware.js</file>
+        <file>QRedux/qmldir</file>
+        <file>QRedux/immutabilityhelperwrapper.js</file>
+        <file>QRedux/immutabilityhelper.min.js</file>
+        <file>QRedux/redux.min.js</file>
+    </qresource>
+</RCC>
