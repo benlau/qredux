@@ -14,7 +14,7 @@ var compose = Redux.compose;
 Qt.include("./immutabilityhelper.min.js");
 var update = ImmutabilityHelper.newContext();
 
-function shallowDiff(v1, v2) {
+function diff(v1, v2) {
     if (v1 === v2) {
         return undefined;
     }
@@ -25,7 +25,7 @@ function shallowDiff(v1, v2) {
 
         var res = {};
         for (var k in v2) {
-            var d = shallowDiff(v1[k], v2[k]);
+            var d = diff(v1[k], v2[k]);
             if (d !== undefined) {
                 res[k] = d;
             }

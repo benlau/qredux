@@ -23,11 +23,11 @@ Item {
             compare(state.actions[1], "dummy");
         }
 
-        function test_shallowDiff() {
+        function test_diff() {
             var obj = {}
-            compare(QRedux.shallowDiff(obj, obj), undefined);
-            compare(QRedux.shallowDiff({}, {}), {});
-            compare(QRedux.shallowDiff({v1: 1},{v1:1, v2:2}), {v2:2});
+            compare(QRedux.diff(obj, obj), undefined);
+            compare(QRedux.diff({}, {}), {});
+            compare(QRedux.diff({v1: 1},{v1:1, v2:2}), {v2:2});
 
             var d1 = {
                 o1: {
@@ -46,10 +46,10 @@ Item {
                 }
             }
 
-            compare(QRedux.shallowDiff(d1,d2), res);
+            compare(QRedux.diff(d1,d2), res);
 
-            compare(QRedux.shallowDiff([],[]), []);
-            compare(QRedux.shallowDiff([3,4],[1,2]), [1,2]);
+            compare(QRedux.diff([],[]), []);
+            compare(QRedux.diff([3,4],[1,2]), [1,2]);
         }
 
         function test_ImmutabilityHelper() {
