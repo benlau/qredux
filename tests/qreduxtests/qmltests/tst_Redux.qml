@@ -198,6 +198,40 @@ Item {
             compare(mockProvider.value1, 2);
         }
 
+        function test_mapReducer() {
+            var reducer1Count = 0;
+            var reducer2Count = 0;
+
+            function reducer1(state, action) {
+                reducer1Count++;
+                return state;
+            }
+
+            function reducer2(state, action) {
+                reducer2Count++;
+                return state;
+            }
+
+            var table = {
+                "reducer1" : reducer1,
+                "reducer2" : reducer2
+            }
+
+            var reducer = QRedux.mapReducer(table);
+
+            var store = QRedux.createStore(reducer);
+
+            compare(reducer1Count, 0);
+            compare(reducer2Count, 0);
+
+            store.dispatch({type: "reducer1"});
+            compare(reducer1Count, 1);
+            compare(reducer2Count, 0);
+
+            store.dispatch({type: "reducer2"});
+            compare(reducer1Count, 1);
+            compare(reducer2Count, 1);
+        }
 
     }
 }

@@ -57,3 +57,15 @@ function assign(dest, src) {
 
     return dest;
 }
+
+function mapReducer(reducers) {
+
+    return function(state, action) {
+        if (reducers.hasOwnProperty(action.type)) {
+            return reducers[action.type](state, action);
+        }
+
+        return state;
+    }
+
+}
