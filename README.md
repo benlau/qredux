@@ -17,20 +17,20 @@ API
 import QRedux 1.0
 ```
 
-**createStore(reducer, [preloadedState], [enhancer])**
+**QRedux.createStore(reducer, [preloadedState], [enhancer])**
 
 It is equivalent to Redux.createStore()
 
 [API Reference ‧ Redux](http://redux.js.org/docs/api/)
 
-**combineReducers(reducers)**
+**QRedux.combineReducers(reducers)**
 
-**applyMiddleware(...middlewares)**
+**QRedux.applyMiddleware(...middlewares)**
 
-**bindActionCreators(actionCreators, dispatch)**
+**QRedux.bindActionCreators(actionCreators, dispatch)**
 
-**compose(...functions)**
+**QRedux.compose(...functions)**
 
-**diff(prevState, currentState)**
+**QRedux.diff(prevState, currentState)**
 
 
