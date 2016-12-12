@@ -54,3 +54,15 @@ function mapReducer(table) {
     }
 
 }
+
+function chainReducer(reducers) {
+
+    return function(state, action) {
+        for (var i in reducers) {
+            state = reducers[i](state, action);
+        }
+
+        return state;
+    }
+
+}

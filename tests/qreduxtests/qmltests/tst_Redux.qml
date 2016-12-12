@@ -233,5 +233,38 @@ Item {
             compare(reducer2Count, 1);
         }
 
+        function test_chainReducer() {
+            var reducer1Count = 0;
+            var reducer2Count = 0;
+
+            function reducer1(state, action) {
+                if (state === undefined) {
+                    state = {};
+                }
+
+                reducer1Count++;
+                return state;
+            }
+
+            function reducer2(state, action) {
+                reducer2Count++;
+                return state;
+            }
+
+            var reducer = QRedux.chainReducer([reducer1, reducer2]);
+
+            var store = QRedux.createStore(reducer);
+
+            compare(reducer1Count, 1);
+            compare(reducer2Count, 1);
+
+            compare(store.getState(), {});
+            store.dispatch({type: "reducer1"});
+
+            compare(reducer1Count, 2);
+            compare(reducer2Count, 2);
+
+        }
+
     }
 }
