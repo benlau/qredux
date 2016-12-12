@@ -6,5 +6,6 @@
         <file>QRedux/qmldir</file>
         <file>QRedux/immutabilityhelper.min.js</file>
         <file>QRedux/redux.min.js</file>
+        <file>QRedux/custom.js</file>
     </qresource>
 </RCC>
