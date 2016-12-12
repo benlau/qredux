@@ -142,16 +142,16 @@ Item {
             property var value5
         }
 
-        function test_assign() {
+        function test_patch() {
             mockProvider.value1 = 0;
 
-            QRedux.assign(mockProvider, undefined);
+            QRedux.patch(mockProvider, undefined);
             compare(mockProvider.value1, 0);
 
-            QRedux.assign(mockProvider, {});
+            QRedux.patch(mockProvider, {});
             compare(mockProvider.value1, 0);
 
-            QRedux.assign(mockProvider, {
+            QRedux.patch(mockProvider, {
                                value0: 123,
                                value1: 1,
                                value2: 2.0,

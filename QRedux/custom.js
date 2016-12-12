@@ -22,32 +22,32 @@ function diff(v1, v2) {
     }
 }
 
-function assign(dest, src) {
+function patch(dest, changes) {
     if (dest === undefined ||
-        src === undefined) {
+        changes === undefined) {
         return dest;
     }
 
-    for (var i in src) {
+    for (var i in changes) {
         if (!dest.hasOwnProperty(i)) {
             continue;
         }
 
-        if (typeof src[i] === "object" && !Array.isArray(src[i])){
-            assign(dest[i], src[i])
+        if (typeof changes[i] === "object" && !Array.isArray(changes[i])){
+            patch(dest[i], changes[i])
         } else {
-            dest[i] = src[i];
+            dest[i] = changes[i];
         }
     }
 
     return dest;
 }
 
-function mapReducer(reducers) {
+function mapReducer(table) {
 
     return function(state, action) {
-        if (reducers.hasOwnProperty(action.type)) {
-            return reducers[action.type](state, action);
+        if (table.hasOwnProperty(action.type)) {
+            return table[action.type](state, action);
         }
 
         return state;

@@ -9,8 +9,8 @@ function createSyncMiddleware(provider) {
                 var prevState = store.getState();
                 next(action);
                 var nextState = store.getState();
-                var patch = diff(prevState, nextState);
-                assign(provider, patch);
+                var changes = diff(prevState, nextState);
+                patch(provider, changes);
             }
         }
 
