@@ -1,17 +1,17 @@
 
-function capitalizeFirstLetter(string) {
+function _capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function _isSignal(object, prop) {
 
-    var signalName = "on" + capitalizeFirstLetter(prop);
+    var signalName = "on" + _capitalizeFirstLetter(prop);
 
     return typeof object[prop] === "function" &&
            typeof object[signalName] === "object";
 }
 
-function createSignalProxyMiddleware(proxy) {
+function signalProxyMiddleware(proxy) {
 
     var actionTable = {}
 

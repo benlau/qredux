@@ -110,7 +110,7 @@ Item {
         function test_SignalProxyMiddleware() {
             var reducer = function() {};
             var store = Redux.createStore(reducer,
-                                          Redux.applyMiddleware(QRedux.createSignalProxyMiddleware(signalProxy)));
+                                          Redux.applyMiddleware(QRedux.signalProxyMiddleware(signalProxy)));
 
             store.dispatch({type: "signal1"});
             compare(signalProxy.signal1Count, 1);
@@ -187,7 +187,7 @@ Item {
             mockProvider.value1 = 0;
 
             var store = QRedux.createStore(reducer,
-                                          QRedux.applyMiddleware(QRedux.createSyncMiddleware(mockProvider)));
+                                          QRedux.applyMiddleware(QRedux.syncMiddleware(mockProvider)));
 
             store.dispatch({type: "inc"});
             compare(store.getState().value1, 1);

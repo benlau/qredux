@@ -1,5 +1,5 @@
 
-function createSyncMiddleware(provider) {
+function syncMiddleware(provider) {
 
     return function (store) {
 
