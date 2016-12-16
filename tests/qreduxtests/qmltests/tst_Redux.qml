@@ -217,7 +217,7 @@ Item {
                 "reducer2" : reducer2
             }
 
-            var reducer = QRedux.mapReducer(table);
+            var reducer = QRedux.mapReducers(table);
 
             var store = QRedux.createStore(reducer);
 
@@ -251,7 +251,7 @@ Item {
                 return state;
             }
 
-            var reducer = QRedux.chainReducer([reducer1, reducer2]);
+            var reducer = QRedux.chainReducers([reducer1, reducer2]);
 
             var store = QRedux.createStore(reducer);
 

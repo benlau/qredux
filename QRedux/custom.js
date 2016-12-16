@@ -43,7 +43,7 @@ function patch(dest, changes) {
     return dest;
 }
 
-function mapReducer(table) {
+function mapReducers(table) {
 
     return function(state, action) {
         if (table.hasOwnProperty(action.type)) {
@@ -55,7 +55,7 @@ function mapReducer(table) {
 
 }
 
-function chainReducer(reducers) {
+function chainReducers(reducers) {
 
     return function(state, action) {
         for (var i in reducers) {
