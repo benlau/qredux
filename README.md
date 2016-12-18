@@ -25,11 +25,29 @@ It is equivalent to Redux.createStore()
 
 **QRedux.combineReducers(reducers)**
 
+It is equivalent to Redux.combineReducers()
+
+[API Reference ‧ Redux](http://redux.js.org/docs/api/)
+
 **QRedux.applyMiddleware(...middlewares)**
+
+It is equivalent to Redux.applyMiddleware()
+
+[API Reference ‧ Redux](http://redux.js.org/docs/api/)
 
 **QRedux.bindActionCreators(actionCreators, dispatch)**
 
+It is equivalent to Redux.bindActionCreators()
+
+[API Reference ‧ Redux](http://redux.js.org/docs/api/)
+
 **QRedux.compose(...functions)**
+
+It is equivalent to Redux.compose()
+
+[API Reference ‧ Redux](http://redux.js.org/docs/api/)
+
+
 
 **QRedux.diff(prevState, currentState)**
 
