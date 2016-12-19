@@ -47,8 +47,25 @@ It is equivalent to Redux.compose()
 
 [API Reference ‧ Redux](http://redux.js.org/docs/api/)
 
+**QRedux.update()**
 
+Mutate a copy of data without changing the original source.
+It is equivalent to ImmutabilityHelper.update().
+
+[Immutability Helpers - React](https://facebook.github.io/react/docs/update.html)
 
 **QRedux.diff(prevState, currentState)**
 
+Compare the different between prevState and currentState. Return undefined if they are the same.
 
+**QRedux.patch(dest, changes)**
+
+Apply the changes to dest object. It will copy attributes from changes to dest only if such attribute is also existed on dest object.
+
+**QRedux.mapReducers(mappingTable)**
+
+**QRedux.chainReducers(reducers)**
+
+**QRedux.signalProxyMiddleware(proxy)**
+
+**QRedux.syncMiddleware(provider)**
