@@ -13,7 +13,7 @@ before_install:
 script:
     - git clone https://github.com/benlau/qtci.git
     - source qtci/path.env
-    - ./qtci/env/qt-5.7
+    - qt-5.7
     - source qt-5.7.env
     - mkdir build
     - cd build
