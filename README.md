@@ -64,6 +64,29 @@ Apply the changes to dest object. It will copy attributes from changes to dest o
 
 **QRedux.mapReducers(mappingTable)**
 
+The mapReducers helper function turns multiple reducers into a single reducing function according to the mapping table.
+
+```
+
+function addTask(state, action) {
+   ...
+}
+
+function removeTask(state, aciton) {
+   ...
+}
+
+var table = {
+  "addTask" : addTask,
+  "removeTask": removeTask
+}
+
+var reducer = QRedux.mapReducers(table);
+
+```
+
+The resulting reducer read from the input action type, and find a corresponding reducer according to the mapping table. Only one of the reducer will be invoked.
+
 **QRedux.chainReducers(reducers)**
 
 **QRedux.signalProxyMiddleware(proxy)**
