@@ -89,6 +89,26 @@ The resulting reducer read from the input action type, and find a corresponding 
 
 **QRedux.chainReducers(reducers)**
 
+The chainReducers helper funciton turns multiple reduces into a single reducing function that will be processed sequentially.
+
+```
+
+function reducer1(state, action) {
+  switch (action.type) {
+     /* ... */
+  }
+}
+
+function reducer2(state, action) {
+  switch (action.type) {
+     /* ... */
+  }
+}
+
+var reducer = QRedux.chainReducers([reducer1, reducer2]);
+
+```
+
 **QRedux.signalProxyMiddleware(proxy)**
 
 **QRedux.syncMiddleware(provider)**
