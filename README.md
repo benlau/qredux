@@ -3,7 +3,10 @@ Redux for QML
 
 QRedux bundle qmlified Redux and Immutability-Helper plus few utilities into a single package for using Redux in QML.  
 
-It is still under development. Use it at your own risk.
+Installation
+============
+
+    qpm install com.github.benlau.qredux
 
 Reference
 ---------
