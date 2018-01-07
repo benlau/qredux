@@ -15,6 +15,7 @@ TEMPLATE = app
 SOURCES +=     main.cpp    
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
+DEFINES += QUICK_TEST_SOURCE_DIR=\\\"$$PWD/qmltests\\\"
 
 include(vendor/vendor.pri)
 include(../../qredux.pri)

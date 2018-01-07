@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     TestRunner runner;
     runner.addImportPath("qrc:///");
-    runner.add(QString(SRCDIR) + "qmltests");
+    runner.add(QString(QUICK_TEST_SOURCE_DIR));
 
     bool error = runner.exec(app.arguments());
 

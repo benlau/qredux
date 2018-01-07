@@ -66,3 +66,52 @@ function chainReducers(reducers) {
     }
 
 }
+
+/// A lightweight implementation of _.merge
+function merge() {
+    var source = arguments[0];
+
+    function copy(source, prop, value) {
+        if (typeof value === "object") {
+            var s = source[prop];
+
+            if (s === undefined || s === null) {
+                s = {};
+            }
+
+            source[prop] = merge(s, value);
+        } else {
+            source[prop] = value;
+        }
+    }
+
+    for (var i = 1 ; i < arguments.length;i++) {
+        var input = arguments[i];
+
+        if (input === undefined || input === null) {
+            continue;
+        }
+
+        for (var p in input) {
+            var value = input[p];
+
+            if (Array.isArray(value)) {
+                var arr = value.slice(0);
+
+                for (var j in arr) {
+                    var arrValue = arr[j];
+                    if (typeof arrValue === "object") {
+                        arr[j] = merge({}, arrValue);
+                    }
+                }
+
+                source[p] = arr;
+
+            } else {
+                copy(source, p, value);
+            }
+        }
+    }
+
+    return source;
+}

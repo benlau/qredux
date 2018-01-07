@@ -266,5 +266,20 @@ Item {
 
         }
 
+        function test_merge() {
+            var input1 = {
+                value1: 1,
+                value2: {
+                    value3: 3.0,
+                    value4: [ {a: 1}, {b:2}]
+                }
+            }
+            var output = QRedux.merge({}, input1);
+
+            compare(JSON.stringify(input1), JSON.stringify(output));
+            compare(output.value2 !== input1.value2, true);
+            compare(output.value2.value4 !== input1.value2.value4, true);
+        }
+
     }
 }
