@@ -139,11 +139,28 @@ Item {
                 property int value1
             }
 
+            /// Array
             property var value5
+
+            /// Test object
+            property var value6: ({})
+        }
+
+        QtObject {
+            id: qtObject
         }
 
         function test_patch() {
             mockProvider.value1 = 0;
+
+            compare(QRedux._isQtObject({}), false);
+
+            compare(QRedux._isQtObject(mockProvider), true);
+
+            compare(QRedux._isQtObject(mockProvider.value0), false);
+            compare(QRedux._isQtObject(mockProvider.value4), true);
+            compare(QRedux._isQtObject(mockProvider.value6), false);
+            compare(QRedux._isQtObject(qtObject), true);
 
             QRedux.patch(mockProvider, undefined);
             compare(mockProvider.value1, 0);
@@ -159,13 +176,19 @@ Item {
                                value4: {
                                    value1: 5
                                },
-                               value5: ["abc", "def"]
+                               value5: ["abc", "def"],
+                               value6: {
+                                    value1: 6,
+                                    value2: 6.2
+                               }
                            });
             compare(mockProvider.value1, 1);
             compare(mockProvider.value2, 2.0);
             compare(mockProvider.value3, "3");
             compare(mockProvider.value4.value1, 5);
             compare(mockProvider.value5, ["abc", "def"]);
+
+            compare(mockProvider.value6, {value1: 6, value2: 6.2});
         }
 
 
@@ -263,7 +286,6 @@ Item {
 
             compare(reducer1Count, 2);
             compare(reducer2Count, 2);
-
         }
 
         function test_merge() {

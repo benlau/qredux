@@ -22,6 +22,18 @@ function diff(v1, v2) {
     }
 }
 
+function _isQtObject(object) {
+    if (typeof(object) !== "object" || typeof(object) === "string") {
+        return false;
+    }
+
+    // Example Value:
+    // QObject(0x7f8a69dcc940)
+    // QQuickItem_QML_4(0x7f8a69dcc420)
+
+    return String(object).match(/^[a-zA-Z0-9_]*\(0x[0-9a-fA-F]*\)$/) !== null;
+}
+
 function patch(dest, changes) {
     if (dest === undefined ||
         changes === undefined) {
@@ -33,7 +45,9 @@ function patch(dest, changes) {
             continue;
         }
 
-        if (typeof changes[i] === "object" && !Array.isArray(changes[i])){
+        if (typeof changes[i] === "object"
+            && !Array.isArray(changes[i])
+            && _isQtObject(dest[i])) {
             patch(dest[i], changes[i])
         } else {
             dest[i] = changes[i];
