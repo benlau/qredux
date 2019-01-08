@@ -45,10 +45,17 @@ function patch(dest, changes) {
             continue;
         }
 
-        if (typeof changes[i] === "object"
-            && !Array.isArray(changes[i])
-            && _isQtObject(dest[i])) {
+        var recursiveMergeOnTargetQtObject = typeof changes[i] === "object"
+                && !Array.isArray(changes[i])
+                && _isQtObject(dest[i]);
+
+        var bothAreObject = typeof changes[i] === "object" && typeof dest[i] === "object";
+
+        if (recursiveMergeOnTargetQtObject) {
             patch(dest[i], changes[i])
+        } else if (bothAreObject) {
+            var mergedValue = merge(dest[i], changes[i]);
+            dest[i] = mergedValue;
         } else {
             dest[i] = changes[i];
         }

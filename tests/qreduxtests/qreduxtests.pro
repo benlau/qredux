@@ -21,7 +21,8 @@ include(vendor/vendor.pri)
 include(../../qredux.pri)
 
 DISTFILES +=     qpm.json \    
-    qmltests/tst_Redux.qml
+    qmltests/tst_Redux.qml \
+    qmltests/tst_patch_JavaScriptObject.qml
 
 HEADERS +=    
 
