@@ -49,7 +49,10 @@ function patch(dest, changes) {
                 && !Array.isArray(changes[i])
                 && _isQtObject(dest[i]);
 
-        var bothAreObject = typeof changes[i] === "object" && typeof dest[i] === "object";
+        var bothAreObject = typeof changes[i] === "object" &&
+                            typeof dest[i] === "object" &&
+                            !Array.isArray(changes[i]) &&
+                            !Array.isArray(dest[i]);
 
         if (recursiveMergeOnTargetQtObject) {
             patch(dest[i], changes[i])

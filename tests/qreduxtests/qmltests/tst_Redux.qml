@@ -191,6 +191,19 @@ Item {
             compare(mockProvider.value6, {value1: 6, value2: 6.2});
         }
 
+        function test_patch_array() {
+            var diff = {
+                value: [5,6]
+            }
+
+            var target = {
+                value: [0,1,2,3]
+            }
+
+            QRedux.patch(target, diff);
+
+            compare(target.value, [5,6]);
+        }
 
         function test_SyncMiddleware() {
             var reducer = function(state, action) {
